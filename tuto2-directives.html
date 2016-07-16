@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular test</title>
+  </head>
+  <body ng-app>
+    <input type="text" ng-model="query"/>
+    <select ng-model="order">
+      <option value="+name">Nom</option>
+      <option value="+comment">Commentaire</option>
+    </select>
+    <div class="" ng-init="users=[{name:'Matthieu', comment:'Kikoo'}, {name:'Marc', comment:'Asv ?'}, {name:'luc', comment:'Mdr'}]">
+        <div ng-repeat="user in users | filter:{name:query} | orderBy:order"><p><strong>{{user.name}}</strong><br/>{{user.comment}}</p></div>
+    </div>
+
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+  </body>
+</html>
