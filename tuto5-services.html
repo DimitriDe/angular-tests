@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Angular test</title>
+  </head>
+  <body ng-app="myApp">
+
+    <div ng-view></div>
+
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
+
+    <script type="text/javascript">
+      var myApp = angular.module('myApp',['ngRoute']);
+
+      myApp.config(function($routeProvider) {
+        $routeProvider.when('/', {templateUrl : 'tuto4/partials/home.html', controller: 'postsController'});
+        $routeProvider.when('/comments/:id', {templateUrl : 'tuto4/partials/comments.html', controller : 'commentsController'});
+        $routeProvider.otherwise({redirectTo : '/'});
+      });
+
+      myApp.controller('postsController', function($scope) {
+        $scope.posts = [
+          {
+            "id": 1,
+            "name": "Geekology",
+            "content": "Cillum esse irure minim aute velit est eiusmod elit. Aliquip culpa ea fugiat et. Exercitation magna id proident qui cupidatat qui ad est non laborum do ex. Lorem incididunt magna cillum voluptate adipisicing dolor non elit. Sint velit sunt labore tempor ut do anim. Pariatur proident adipisicing dolor anim sit exercitation do eu tempor.",
+            "comments": [
+              {
+                "username": "Miranda",
+                "city": "Brethren",
+                "email": "mirandabrooks@geekology.com",
+                "content": "Consequat esse do officia dolore magna tempor ea magna eu eu sunt culpa anim. Cupidatat in culpa sint mollit sint laboris culpa minim aute ipsum adipisicing et enim reprehenderit. Velit aute do aute laborum ut. Ex irure labore culpa aute elit esse duis irure id anim minim non. Irure ullamco deserunt amet labore consequat mollit proident Lorem officia aliquip fugiat ad."
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "name": "Exiand",
+            "content": "Adipisicing enim dolor exercitation nostrud incididunt duis laborum voluptate cupidatat magna nulla irure aute nisi. Incididunt do cillum commodo sit magna ex minim. Est aliqua nulla occaecat ullamco tempor duis consequat eu in. Fugiat mollit aute aliquip nulla sit nostrud ut eiusmod magna. Incididunt minim anim ullamco aliqua esse nulla exercitation exercitation esse ullamco ipsum. Anim in ex sint amet aute reprehenderit in non anim exercitation sunt esse irure.",
+            "comments": [
+              {
+                "username": "Sheree",
+                "city": "Katonah",
+                "email": "shereebrooks@exiand.com",
+                "content": "Officia cupidatat reprehenderit culpa sint id est cupidatat velit aliquip est. Et laborum voluptate esse anim adipisicing ad aliquip adipisicing amet incididunt velit. Laborum sunt laboris laboris labore laborum. Ad eiusmod ex fugiat ad laborum nisi. Eu do elit incididunt eu commodo ad."
+              },
+              {
+                "username": "Olga",
+                "city": "Clarence",
+                "email": "olgabrooks@exiand.com",
+                "content": "Incididunt sit eiusmod elit tempor. Incididunt nostrud fugiat commodo cupidatat reprehenderit. Ex id duis culpa nulla dolore amet cupidatat exercitation duis laboris nulla. Tempor commodo tempor voluptate est duis tempor dolor consectetur ex in. Nostrud culpa adipisicing mollit id incididunt labore laboris ipsum reprehenderit magna eu enim tempor."
+              },
+              {
+                "username": "Mcbride",
+                "city": "Bowie",
+                "email": "mcbridebrooks@exiand.com",
+                "content": "Ex sunt consequat et mollit mollit. Incididunt elit aliquip exercitation id velit fugiat in minim commodo laboris magna ex eu. Eu est eu nisi esse pariatur officia cillum est laborum. Ullamco in culpa minim incididunt. Culpa officia reprehenderit duis voluptate mollit mollit fugiat adipisicing nostrud culpa consectetur laborum enim."
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "name": "Aquafire",
+            "content": "Enim ex sit velit tempor voluptate Lorem aute consectetur. Commodo consequat consequat aute velit voluptate nostrud voluptate pariatur sit ex voluptate voluptate excepteur id. Pariatur irure cillum pariatur occaecat culpa aliqua anim labore est ut adipisicing. In qui duis proident quis officia veniam esse enim sunt mollit dolor id. Ex voluptate sit anim tempor. Nulla sit labore culpa ea eiusmod elit et eu dolor dolor id.",
+            "comments": [
+              {
+                "username": "Queen",
+                "city": "Leola",
+                "email": "queenbrooks@aquafire.com",
+                "content": "Et veniam in aliquip nulla enim quis do deserunt ad sit. Pariatur id sint consequat incididunt sit laboris eu sit nulla sunt veniam minim. Incididunt incididunt reprehenderit pariatur eu deserunt pariatur. Ad consequat nisi eiusmod enim incididunt aute cupidatat sint culpa magna Lorem. Aliquip id nostrud deserunt labore est pariatur anim id irure aute consectetur nulla."
+              },
+              {
+                "username": "Ruth",
+                "city": "Nipinnawasee",
+                "email": "ruthbrooks@aquafire.com",
+                "content": "Enim occaecat nostrud sint non est ad occaecat nulla esse qui anim. Ut aliquip laborum nulla elit cillum occaecat dolore incididunt. Dolore elit non amet ullamco tempor duis sunt reprehenderit nulla voluptate ea laboris sit consectetur. Est eiusmod eu pariatur esse deserunt non qui veniam fugiat amet velit occaecat. Officia qui Lorem aute irure quis cillum incididunt proident."
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "name": "Geekular",
+            "content": "Officia velit eu proident laboris ex cillum nulla laborum ipsum consequat magna. In eiusmod sint voluptate duis quis voluptate et. Ex enim irure mollit eu laboris. Ea nostrud in ullamco fugiat dolor culpa. Eiusmod ullamco duis sit excepteur do ad adipisicing consequat adipisicing qui et deserunt laboris cillum. Ex pariatur qui nulla cupidatat.",
+            "comments": [
+              {
+                "username": "Heidi",
+                "city": "Ferney",
+                "email": "heidibrooks@geekular.com",
+                "content": "Id cupidatat proident nisi consequat cillum Lorem ullamco ex pariatur adipisicing ex qui commodo. Eu aute sit est anim qui officia dolor velit. Minim fugiat eiusmod quis exercitation incididunt tempor anim amet veniam dolore fugiat excepteur consequat. Eiusmod nisi est exercitation do ea est do officia. Dolor excepteur deserunt pariatur veniam non."
+              },
+              {
+                "username": "Malinda",
+                "city": "Fairmount",
+                "email": "malindabrooks@geekular.com",
+                "content": "Culpa occaecat quis nostrud incididunt sunt. Incididunt minim sit anim culpa occaecat culpa nulla. Ex incididunt aliquip excepteur voluptate laboris et ullamco exercitation Lorem. Quis veniam enim eiusmod ad dolore ipsum quis deserunt duis eiusmod. Duis ex culpa pariatur id sunt veniam do incididunt enim adipisicing irure."
+              },
+              {
+                "username": "Dolores",
+                "city": "Chase",
+                "email": "doloresbrooks@geekular.com",
+                "content": "Aliqua sunt sint enim ex deserunt tempor nostrud laboris est velit. Minim eiusmod laboris do irure magna reprehenderit ex ad. Consectetur enim fugiat qui consectetur laboris. Lorem mollit consectetur deserunt veniam pariatur ullamco deserunt culpa exercitation excepteur labore. Sunt qui consequat voluptate et deserunt esse exercitation amet cillum."
+              }
+            ]
+          },
+          {
+            "id": 5,
+            "name": "Podunk",
+            "content": "Ex esse sunt ut officia velit nulla proident adipisicing. Aute in commodo esse officia fugiat eu id commodo. Ea labore quis excepteur ex et. Sint ut in id tempor eiusmod nisi proident aliqua et dolor commodo. Reprehenderit ipsum qui dolore sint dolore exercitation id mollit laboris. Eu magna ad incididunt aute ea ullamco anim sint quis sint.",
+            "comments": [
+              {
+                "username": "Josephine",
+                "city": "Diaperville",
+                "email": "josephinebrooks@podunk.com",
+                "content": "Sit do excepteur est irure consectetur proident est id do. Ea enim culpa tempor Lorem ea do minim irure sit ex non. Aliquip cillum in labore dolor anim nostrud ea consectetur labore nulla Lorem voluptate eu. Minim excepteur adipisicing dolor culpa dolore culpa est. Qui esse cillum est velit eiusmod cillum occaecat velit exercitation velit mollit esse duis."
+              },
+              {
+                "username": "Tanya",
+                "city": "Camino",
+                "email": "tanyabrooks@podunk.com",
+                "content": "Qui ea voluptate non amet laboris quis. Eu labore sint proident culpa eu fugiat adipisicing pariatur nostrud ut labore deserunt. Consequat anim adipisicing in veniam ea. Quis voluptate deserunt ad cillum Lorem veniam adipisicing mollit quis et sit incididunt laboris nostrud. Aute officia cupidatat sit ea occaecat minim culpa anim ullamco duis."
+              }
+            ]
+          }
+        ];
+      });
+
+      myApp.controller('commentsController', function($scope) {
+
+      })
+    </script>
+
+  </body>
+</html>

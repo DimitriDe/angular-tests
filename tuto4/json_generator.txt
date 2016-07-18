@@ -1,0 +1,17 @@
+[
+  '{{repeat(5, 7)}}',
+  {
+    id: "{{index()}}",
+    name: "{{company()}}",
+    content: "{{lorem(6)}}",
+    comments: [
+      '{{repeat(1, 3)}}',
+      {
+        username: "{{firstName()}}",
+        city: "{{city()}}",
+        email: "{{email()}}",
+        content: "{{lorem(5)}}"
+      }
+    ]
+  }
+]
