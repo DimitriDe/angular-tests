@@ -12,16 +12,17 @@
     <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
 
     <script type="text/javascript">
-      var myApp = angular.module('myApp',['ngRoute']);
+      var app = angular.module('myApp',['ngRoute']);
 
-      myApp.config(function($routeProvider) {
-        $routeProvider.when('/', {templateUrl : 'tuto4/partials/home.html', controller: 'postsController'});
-        $routeProvider.when('/comments/:id', {templateUrl : 'tuto4/partials/comments.html', controller : 'commentsController'});
+      app.config(function($routeProvider) {
+        $routeProvider.when('/', {templateUrl : 'tuto5/partials/home.html', controller: 'postsController'});
+        $routeProvider.when('/comments/:id', {templateUrl : 'tuto5/partials/comments.html', controller : 'commentsController'});
         $routeProvider.otherwise({redirectTo : '/'});
       });
 
-      myApp.controller('postsController', function($scope) {
-        $scope.posts = [
+      app.service('PostService', function() {
+        var that = this;
+        that.posts = [
           {
             "id": 1,
             "name": "Geekology",
@@ -124,10 +125,30 @@
             ]
           }
         ];
+
+        that.getPosts = function() {
+          return that.posts;
+        }
+
+        that.getPost = function(id) {
+          var post = {};
+          angular.forEach( that.posts, function(value, key) {
+            if(value.id == id) {
+              post = value;
+            }
+          });
+          return post;
+        }
       });
 
-      myApp.controller('commentsController', function($scope) {
+      app.controller('postsController', function($scope, PostService) {
+        $scope.posts = PostService.getPosts();
+      });
 
+      app.controller('commentsController', function($scope, PostService, $routeParams) {
+        post = PostService.getPost($routeParams.id);
+        $scope.title = post.name;
+        $scope.comments = post.comments;
       })
     </script>
 
