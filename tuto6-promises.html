@@ -10,62 +10,9 @@
 
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
-
-    <script type="text/javascript">
-      var app = angular.module('myApp',['ngRoute']);
-
-      app.config(function($routeProvider) {
-        $routeProvider.when('/', {templateUrl : 'tuto6/partials/home.html', controller: 'postsController'});
-        $routeProvider.when('/comments/:id', {templateUrl : 'tuto6/partials/comments.html', controller : 'commentsController'});
-        $routeProvider.otherwise({redirectTo : '/'});
-      });
-
-      app.service('PostService', function($http, $q) {
-        var that = this;
-        that.posts = false;
-
-        that.getPosts = function(data, status) {
-          var deferred = $q.defer();
-          $http.get('tuto6/posts.json')
-            .success( function(data, status) {
-              that.posts = data;
-              deferred.resolve(that.posts);
-            })
-            .error( function() {
-              deferred.reject('Impossible de récupérer les données');
-            });
-
-          return deferred.promise;
-        }
-
-        that.getPost = function(id) {
-          var post = {};
-          angular.forEach( that.posts, function(value, key) {
-            if(value.id == id) {
-              post = value;
-            }
-          });
-          return post;
-        }
-      });
-
-      app.controller('postsController', function($scope, PostService) {
-        $scope.loading = true;
-        $scope.posts = PostService.getPosts().then( function(posts) {
-          $scope.loading = false;
-          $scope.posts = posts;
-        }, function(msg) {
-          $scope.loading = false;
-          alert('msg');
-        });
-      });
-
-      app.controller('commentsController', function($scope, PostService, $routeParams) {
-        post = PostService.getPost($routeParams.id);
-        $scope.title = post.name;
-        $scope.comments = post.comments;
-      })
-    </script>
-
+    <script type="text/javascript" src="tuto6/app.js"></script>
+    <script type="text/javascript" src="tuto6/services/PostsService.js"></script>
+    <script type="text/javascript" src="tuto6/controllers/PostsController.js"></script>
+    <script type="text/javascript" src="tuto6/controllers/CommentsController.js"></script>
   </body>
 </html>

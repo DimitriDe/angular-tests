@@ -1,19 +1,13 @@
 <a href="#/">Revenir aux articles</a>
-<input type="text" ng-model="query"/>
+<div ng-show="loading">Chargement...</div>
+<div ng-hide="loading">
+  <h1>{{title}}</h1>
 
-<select ng-model="order">
-  <option value="+username">Nom</option>
-  <option value="+content">Commentaire</option>
-</select>
-
-<h1>{{title}}</h1>
-
-<div ng-repeat="comment in comments |
-  filter:{content:query} |
-  orderBy:order">
-  <p>
-    <strong>{{comment.username}}</strong>
-    <br/>
-    {{comment.content}}
-  </p>
+  <div ng-repeat="comment in comments">
+    <p>
+      <strong>{{comment.username}}</strong>
+      <br/>
+      {{comment.content}}
+    </p>
+  </div>
 </div>
